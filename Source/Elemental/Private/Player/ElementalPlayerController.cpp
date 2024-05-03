@@ -2,6 +2,7 @@
 
 
 #include "Player/ElementalPlayerController.h"
+#include <Interaction/TargetInterface.h>
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 #include "Character/ElementalCharacter.h"
@@ -162,62 +163,62 @@ void AElementalPlayerController::ZoomOutFun(const FInputActionValue& InputAction
 
 void AElementalPlayerController::CursorTrace()
 {
-	//FHitResult cursorHit;
-	//GetHitResultUnderCursor(ECC_Visibility, false, cursorHit);
+	FHitResult cursorHit;
+	GetHitResultUnderCursor(ECC_Visibility, false, cursorHit);
 
-	//if (!cursorHit.bBlockingHit)
-	//{
-	//	return;
-	//}
+	if (!cursorHit.bBlockingHit)
+	{
+		return;
+	}
 
-	//LastActor = ThisActor;
-	//ThisActor = Cast<ITargetInterface>(cursorHit.GetActor());
+	LastActor = ThisActor;
+	ThisActor = Cast<ITargetInterface>(cursorHit.GetActor());
 
-	///**
-	// *	Line trace from cursor. There are several scenarios
-	// *	A. Last actor is null and this actor is null
-	// *		- Do nothing
-	// *	B. LastActor is null && thisAcor  is valid
-	// *		- Highlight thisActor
-	// *	C. lastActor is valid && thisActor is null
-	// *		- UnHighlight lastActor
-	// *	D. Both actors are Valid, but lastActor != thisActor
-	// * 		- UnHighlight lastActor, and Highlight thisActor
-	// *	E. Both actors are Valid, and lastActor == thisActor
-	// *		- Do nothing
-	// */
+	/**
+	 *	Line trace from cursor. There are several scenarios
+	 *	A. Last actor is null and this actor is null
+	 *		- Do nothing
+	 *	B. LastActor is null && thisAcor  is valid
+	 *		- Highlight thisActor
+	 *	C. lastActor is valid && thisActor is null
+	 *		- UnHighlight lastActor
+	 *	D. Both actors are Valid, but lastActor != thisActor
+	 * 		- UnHighlight lastActor, and Highlight thisActor
+	 *	E. Both actors are Valid, and lastActor == thisActor
+	 *		- Do nothing
+	 */
 
-	//if (LastActor == nullptr)
-	//{
-	//	if (ThisActor != nullptr)
-	//	{
-	//		//case b
-	//		ThisActor->HighlightActor();
-	//	}
-	//	else
-	//	{
-	//		//case a -> Both are null
-	//	}
-	//}
-	//else
-	//{
-	//	if (ThisActor == nullptr)
-	//	{
-	//		//case c
-	//		LastActor->UnHighlightActor();
-	//	}
-	//	else//both actors are not null (both are valid)
-	//	{
-	//		if (LastActor != ThisActor)
-	//		{
-	//			//case d
-	//			LastActor->UnHighlightActor();
-	//			ThisActor->HighlightActor();
-	//		}
-	//		else
-	//		{
-	//			//case E do nothing
-	//		}
-	//	}
-	//}
+	if (LastActor == nullptr)
+	{
+		if (ThisActor != nullptr)
+		{
+			//case b
+			ThisActor->HighlightActor();
+		}
+		else
+		{
+			//case a -> Both are null
+		}
+	}
+	else
+	{
+		if (ThisActor == nullptr)
+		{
+			//case c
+			LastActor->UnHighlightActor();
+		}
+		else//both actors are not null (both are valid)
+		{
+			if (LastActor != ThisActor)
+			{
+				//case d
+				LastActor->UnHighlightActor();
+				ThisActor->HighlightActor();
+			}
+			else
+			{
+				//case E do nothing
+			}
+		}
+	}
 }
