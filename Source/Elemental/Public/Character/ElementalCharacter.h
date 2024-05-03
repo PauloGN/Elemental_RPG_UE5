@@ -13,5 +13,12 @@ UCLASS()
 class ELEMENTAL_API AElementalCharacter : public AElementalCharacterBase
 {
 	GENERATED_BODY()
+
+public:
+
+	AElementalCharacter();
+
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<class USpringArmComponent> CameraBoom;
 	
 };
