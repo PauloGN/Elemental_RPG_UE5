@@ -112,7 +112,7 @@ void AElementalPlayerController::Look(const FInputActionValue& InputActionValue)
 	{
 		//Note: To control camera rotation SpringAmr should activate usePawnControlRotation as well inherit pitch, roll and yaw
 		ControlledPawn->AddControllerYawInput(LookAxisVector.X);
-		ControlledPawn->AddControllerPitchInput(LookAxisVector.Y);
+		ControlledPawn->AddControllerPitchInput(-LookAxisVector.Y);
 	}
 }
 
