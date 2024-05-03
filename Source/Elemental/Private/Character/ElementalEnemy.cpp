@@ -3,3 +3,10 @@
 
 #include "Character/ElementalEnemy.h"
 
+void AElementalEnemy::HighlightActor()
+{
+}
+
+void AElementalEnemy::UnHighlightActor()
+{
+}
