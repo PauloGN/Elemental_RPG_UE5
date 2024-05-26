@@ -10,7 +10,7 @@ AElementalCharacter::AElementalCharacter()
 {
 	UCharacterMovementComponent* cm = GetCharacterMovement();
 	cm->bOrientRotationToMovement = true;
-	cm->RotationRate = FRotator(0.f, 400.0f, 0.f);
+	cm->RotationRate = FRotator(0.f, 300.0f, 0.f);
 	cm->bConstrainToPlane = true;
 	cm->bSnapToPlaneAtStart = true;
 

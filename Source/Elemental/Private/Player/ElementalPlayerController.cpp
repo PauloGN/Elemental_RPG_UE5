@@ -33,12 +33,11 @@ void AElementalPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 	//make sure to set in blueprint
-	check(ElementalContext);
+	check(ElementalMappingContext);
 
-	UEnhancedInputLocalPlayerSubsystem* subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
-	if (subsystem)
+	if (UEnhancedInputLocalPlayerSubsystem* subsystemInput = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
 	{
-		subsystem->AddMappingContext(ElementalContext, 0);
+		subsystemInput->AddMappingContext(ElementalMappingContext, 0);
 	}
 
 	bShowMouseCursor = true;
@@ -55,9 +54,8 @@ void AElementalPlayerController::BeginPlay()
 
 	if (ElementalChar)
 	{
-		// Access the SpringArm component
-		USpringArmComponent* SpringArm = ElementalChar->FindComponentByClass<USpringArmComponent>();
-		if (SpringArm)
+		//Access the SpringArm component
+		if (USpringArmComponent* SpringArm = ElementalChar->FindComponentByClass<USpringArmComponent>())
 		{
 			CameraBoom = SpringArm;
 		}
@@ -68,6 +66,7 @@ void AElementalPlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 
+	//Native input component cast to new Enhanced Input
 	UEnhancedInputComponent* enhancedInputComponent = CastChecked<UEnhancedInputComponent>(InputComponent);
 
 	enhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ThisClass::Move);
@@ -143,7 +142,7 @@ void AElementalPlayerController::AllowCameraMove(const FInputActionValue& InputA
 	}
 }
 
-void AElementalPlayerController::ZoomInFun(const FInputActionValue& InputActionValue)
+void AElementalPlayerController::ZoomInFun()
 {
 	CameraBoom->TargetArmLength -= ARM_LENGTH_RATE;
 	if (CameraBoom->TargetArmLength <= MIN_ARM_LENGTH)
@@ -152,7 +151,7 @@ void AElementalPlayerController::ZoomInFun(const FInputActionValue& InputActionV
 	}
 }
 
-void AElementalPlayerController::ZoomOutFun(const FInputActionValue& InputActionValue)
+void AElementalPlayerController::ZoomOutFun()
 {
 	CameraBoom->TargetArmLength += ARM_LENGTH_RATE;
 	if (CameraBoom->TargetArmLength >= MAX_ARM_LENGTH)

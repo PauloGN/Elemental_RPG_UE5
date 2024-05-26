@@ -35,7 +35,7 @@ private:
 #pragma region INPUTS
 
 	UPROPERTY(EditAnywhere, Category = "Input")
-	TObjectPtr<UInputMappingContext> ElementalContext;
+	TObjectPtr<UInputMappingContext> ElementalMappingContext;
 
 	UPROPERTY(EditAnywhere, Category = "Input")
 	TObjectPtr<UInputAction> MoveAction;
@@ -56,8 +56,8 @@ private:
 	void Look(const FInputActionValue& InputActionValue);
 	void AllowCameraMove(const FInputActionValue& InputActionValue);
 
-	void ZoomInFun(const FInputActionValue& InputActionValue);
-	void ZoomOutFun(const FInputActionValue& InputActionValue);
+	void ZoomInFun();
+	void ZoomOutFun();
 #pragma endregion
 
 	void CursorTrace();
