@@ -79,7 +79,7 @@ void AElementalPlayerController::SetupInputComponent()
 
 void AElementalPlayerController::Move(const FInputActionValue& InputActionValue)
 {
-	const FVector2D InputAAxisVector = InputActionValue.Get<FVector2D>();
+	const FVector2D InputAxisVector = InputActionValue.Get<FVector2D>();
 
 	const FRotator rotation = GetControlRotation();
 	const FRotator yawRotation(0.0f, rotation.Yaw, 0.0f);
@@ -89,8 +89,8 @@ void AElementalPlayerController::Move(const FInputActionValue& InputActionValue)
 
 	if (APawn* controlledPawn = GetPawn<APawn>())
 	{
-		controlledPawn->AddMovementInput(forwardDirection, InputAAxisVector.Y);
-		controlledPawn->AddMovementInput(rightdDirection, InputAAxisVector.X);
+		controlledPawn->AddMovementInput(forwardDirection, InputAxisVector.Y);
+		controlledPawn->AddMovementInput(rightdDirection, InputAxisVector.X);
 	}
 }
 
@@ -167,6 +167,11 @@ void AElementalPlayerController::CursorTrace()
 
 	if (!cursorHit.bBlockingHit)
 	{
+		if(ThisActor)
+		{
+			ThisActor->UnHighlightActor();
+			ThisActor = nullptr;
+		}
 		return;
 	}
 

@@ -1,7 +1,6 @@
 // Copyright Paulo R Santos. GNS
 
 #include "Character/ElementalCharacterBase.h"
-
 #include "Components/SkeletalMeshComponent.h"
 
 // Sets default values
