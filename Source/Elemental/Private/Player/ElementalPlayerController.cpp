@@ -35,6 +35,7 @@ void AElementalPlayerController::BeginPlay()
 	//make sure to set in blueprint
 	check(ElementalMappingContext);
 
+	//Subsystems are singletons classes to handle specific services
 	if (UEnhancedInputLocalPlayerSubsystem* subsystemInput = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer()))
 	{
 		subsystemInput->AddMappingContext(ElementalMappingContext, 0);
@@ -50,14 +51,14 @@ void AElementalPlayerController::BeginPlay()
 
 	//Get USpringArm Comp
 	// Get a reference to the character
-	AElementalCharacter* ElementalChar = Cast<AElementalCharacter>(GetPawn());
+	AElementalCharacter* elementalChar = Cast<AElementalCharacter>(GetPawn());
 
-	if (ElementalChar)
+	if (elementalChar)
 	{
 		//Access the SpringArm component
-		if (USpringArmComponent* SpringArm = ElementalChar->FindComponentByClass<USpringArmComponent>())
+		if (USpringArmComponent* springArm = elementalChar->FindComponentByClass<USpringArmComponent>())
 		{
-			CameraBoom = SpringArm;
+			CameraBoom = springArm;
 		}
 	}
 }
@@ -79,7 +80,7 @@ void AElementalPlayerController::SetupInputComponent()
 
 void AElementalPlayerController::Move(const FInputActionValue& InputActionValue)
 {
-	const FVector2D InputAxisVector = InputActionValue.Get<FVector2D>();
+	const FVector2D inputAxisVector = InputActionValue.Get<FVector2D>();
 
 	const FRotator rotation = GetControlRotation();
 	const FRotator yawRotation(0.0f, rotation.Yaw, 0.0f);
@@ -89,8 +90,8 @@ void AElementalPlayerController::Move(const FInputActionValue& InputActionValue)
 
 	if (APawn* controlledPawn = GetPawn<APawn>())
 	{
-		controlledPawn->AddMovementInput(forwardDirection, InputAxisVector.Y);
-		controlledPawn->AddMovementInput(rightdDirection, InputAxisVector.X);
+		controlledPawn->AddMovementInput(forwardDirection, inputAxisVector.Y);
+		controlledPawn->AddMovementInput(rightdDirection, inputAxisVector.X);
 	}
 }
 
@@ -102,17 +103,17 @@ void AElementalPlayerController::Look(const FInputActionValue& InputActionValue)
 	}
 
 	// Get the input values
-	const FVector2D LookAxisVector = InputActionValue.Get<FVector2D>();
+	const FVector2D lookAxisVector = InputActionValue.Get<FVector2D>();
 
 	// Get the controlled pawn (assuming it's the character)
-	APawn* ControlledPawn = GetPawn();
+	APawn* controlledPawn = GetPawn();
 
 	// Check if the controlled pawn exists and is of type AAuraCharacter
-	if (ControlledPawn && ControlledPawn->IsA<AElementalCharacter>())
+	if (controlledPawn && controlledPawn->IsA<AElementalCharacter>())
 	{
 		//Note: To control camera rotation SpringAmr should activate usePawnControlRotation as well inherit pitch, roll and yaw
-		ControlledPawn->AddControllerYawInput(LookAxisVector.X);
-		ControlledPawn->AddControllerPitchInput(-LookAxisVector.Y);
+		controlledPawn->AddControllerYawInput(lookAxisVector.X);
+		controlledPawn->AddControllerPitchInput(-lookAxisVector.Y);
 	}
 }
 
