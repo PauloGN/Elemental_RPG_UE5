@@ -177,7 +177,8 @@ void AElementalPlayerController::CursorTrace()
 	}
 
 	LastActor = ThisActor;
-	ThisActor = Cast<ITargetInterface>(cursorHit.GetActor());
+	//The Wrapper "TScriptInterface" allows you to get the correct type without casting
+	ThisActor = cursorHit.GetActor();
 
 	/**
 	 *	Line trace from cursor. There are several scenarios

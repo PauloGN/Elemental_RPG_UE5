@@ -60,8 +60,8 @@ private:
 #pragma endregion
 
 	void CursorTrace();
-	TObjectPtr <ITargetInterface> LastActor;
-	TObjectPtr <ITargetInterface>  ThisActor;
+	TScriptInterface <ITargetInterface> LastActor;
+	TScriptInterface <ITargetInterface> ThisActor;
 
 	bool bAllowCameraAction = false;
 	TObjectPtr<class USpringArmComponent> CameraBoom;

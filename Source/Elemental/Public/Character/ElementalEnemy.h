@@ -17,6 +17,8 @@ class ELEMENTAL_API AElementalEnemy : public AElementalCharacterBase, public ITa
 
 public:
 
+	AElementalEnemy();
+
 	virtual void HighlightActor() override;
 	virtual void UnHighlightActor() override;
 };
