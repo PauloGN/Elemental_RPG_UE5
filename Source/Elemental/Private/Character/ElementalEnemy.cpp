@@ -3,10 +3,17 @@
 
 #include "Character/ElementalEnemy.h"
 #include "Elemental/Elemental.h"
+#include "GAS/ElementalAbilitySystemComponent.h"
+#include "GAS/ElementalAttributeSet.h"
 
 AElementalEnemy::AElementalEnemy()
 {
 	GetMesh()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
+
+	AbilitySystemComponent = CreateDefaultSubobject<UElementalAbilitySystemComponent>("AbilitySystemComponent");
+	AbilitySystemComponent->SetIsReplicated(true);
+
+	AttributeSet = CreateDefaultSubobject<UElementalAttributeSet>("AttributeSet");
 }
 
 void AElementalEnemy::HighlightActor()

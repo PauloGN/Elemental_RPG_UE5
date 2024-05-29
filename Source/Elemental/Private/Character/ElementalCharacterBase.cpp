@@ -14,6 +14,16 @@ AElementalCharacterBase::AElementalCharacterBase()
 	Weapon->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 }
 
+UAbilitySystemComponent* AElementalCharacterBase::GetAbilitySystemComponent() const
+{
+	return AbilitySystemComponent;
+}
+
+UAttributeSet* AElementalCharacterBase::GetAttributeSet() const
+{
+	return AttributeSet;
+}
+
 void AElementalCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
