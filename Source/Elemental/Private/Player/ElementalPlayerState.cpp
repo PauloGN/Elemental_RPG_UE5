@@ -12,6 +12,8 @@ AElementalPlayerState::AElementalPlayerState()
 
 	AbilitySystemComponent = CreateDefaultSubobject<UElementalAbilitySystemComponent>("AbilitySystemComponent");
 	AbilitySystemComponent->SetIsReplicated(true);
+	//How Game play effects will be replicated to clients
+	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Mixed);
 
 	AttributeSet = CreateDefaultSubobject<UElementalAttributeSet>("AttributeSet");
 }

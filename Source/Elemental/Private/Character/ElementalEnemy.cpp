@@ -12,7 +12,8 @@ AElementalEnemy::AElementalEnemy()
 
 	AbilitySystemComponent = CreateDefaultSubobject<UElementalAbilitySystemComponent>("AbilitySystemComponent");
 	AbilitySystemComponent->SetIsReplicated(true);
-
+	//How Game play effects will be replicated to clients
+	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal);
 	AttributeSet = CreateDefaultSubobject<UElementalAttributeSet>("AttributeSet");
 }
 
