@@ -16,9 +16,15 @@ class ELEMENTAL_API AElementalEnemy : public AElementalCharacterBase, public ITa
 	GENERATED_BODY()
 
 public:
-
+	
 	AElementalEnemy();
-
+#pragma region INTERFACES
+	//Target Interface
 	virtual void HighlightActor() override;
 	virtual void UnHighlightActor() override;
+#pragma endregion
+
+protected:
+
+	virtual void BeginPlay() override;
 };

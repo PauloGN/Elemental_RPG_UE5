@@ -1,6 +1,5 @@
 // Copyright Paulo R Santos. GNS
 
-
 #include "Character/ElementalEnemy.h"
 #include "Elemental/Elemental.h"
 #include "GAS/ElementalAbilitySystemComponent.h"
@@ -38,4 +37,12 @@ void AElementalEnemy::UnHighlightActor()
 	{
 		Weapon->SetRenderCustomDepth(false);
 	}
+}
+
+void AElementalEnemy::BeginPlay()
+{
+	Super::BeginPlay();
+
+	AbilitySystemComponent->InitAbilityActorInfo(this, this);
+
 }
