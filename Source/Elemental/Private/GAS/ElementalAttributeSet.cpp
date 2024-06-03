@@ -2,11 +2,14 @@
 
 
 #include "GAS/ElementalAttributeSet.h"
-#include "AbilitySystemComponent.h"
 #include "Net/UnrealNetwork.h"
 
 UElementalAttributeSet::UElementalAttributeSet()
 {
+	InitMaxHealth(100.0f);
+	InitHealth(100.0f);
+	InitMaxMana(100.f);
+	InitMana(50.0f);
 }
 
 void UElementalAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
