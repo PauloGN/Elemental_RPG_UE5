@@ -8,7 +8,12 @@
 #include "ElementalAttributeSet.generated.h"
 
 /**
- * 
+ * 1 - Create the FGameplayAttributeData
+ * 2 - Set Uproperty
+ * 3 - Set Attribute accessors
+ * 4 - Set the On Rep notify function
+ * 5 - On Rep notify cpp -> add GAMEPLAYATTRIBUTE_REPNOTIFY
+ * 6 - Set proper replication on  GetLifetimeReplicatedProps function
  */
 
 	#define ATTRIBUTE_ACCESSORS(ClassName, PropertyName) \
@@ -28,6 +33,8 @@ public:
 
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
+#pragma region Vital Attributes
+
 	UPROPERTY(ReplicatedUsing = OnRep_Health, BlueprintReadOnly, Category = "Vital Attributes")
 	FGameplayAttributeData Health;
 	ATTRIBUTE_ACCESSORS(UElementalAttributeSet, Health);
@@ -44,6 +51,7 @@ public:
 	FGameplayAttributeData MaxMana;
 	ATTRIBUTE_ACCESSORS(UElementalAttributeSet, MaxMana);
 
+	//~ On Rep Notify
 	UFUNCTION()
 	void OnRep_Health(const FGameplayAttributeData& OldHealth) const;
 
@@ -55,6 +63,7 @@ public:
 
 	UFUNCTION()
 	void OnRep_MaxMana(const FGameplayAttributeData& OldMaxMana) const;
-
+	//End of notify
+#pragma endregion
 
 };

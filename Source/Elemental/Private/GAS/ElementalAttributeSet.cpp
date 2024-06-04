@@ -31,7 +31,6 @@ void UElementalAttributeSet::OnRep_Health(const FGameplayAttributeData& OldHealt
 void UElementalAttributeSet::OnRep_MaxHealth(const FGameplayAttributeData& OldMaxHealth) const
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UElementalAttributeSet, MaxHealth, OldMaxHealth)
-
 }
 
 void UElementalAttributeSet::OnRep_Mana(const FGameplayAttributeData& OldMana) const
