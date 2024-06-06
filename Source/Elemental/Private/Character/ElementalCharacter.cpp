@@ -7,7 +7,9 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "Player/ElementalPlayerController.h"
 #include "Player/ElementalPlayerState.h"
+#include "UI/HUD/ElementalHUD.h"
 
 AElementalCharacter::AElementalCharacter()
 {
@@ -53,4 +55,13 @@ void AElementalCharacter::InitAbilityActorInfo()
 	AttributeSet = ElementalPlayerState->GetAttributeSet();
 	//Init Actor info for ability system component
 	AbilitySystemComponent->InitAbilityActorInfo(ElementalPlayerState, this);
+
+	//HUD
+	if(AElementalPlayerController* ElementalPlayerController = Cast<AElementalPlayerController>(GetController()))
+	{
+		if(AElementalHUD* ElementalHUD = Cast<AElementalHUD>(ElementalPlayerController->GetHUD()))
+		{
+			ElementalHUD->InitOverlay(ElementalPlayerController, ElementalPlayerState, AbilitySystemComponent, AttributeSet);
+		}
+	}
 }
