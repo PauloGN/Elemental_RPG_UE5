@@ -26,12 +26,12 @@ void AElementalHUD::InitOverlay(APlayerController* PC, APlayerState* PS, UAbilit
 	checkf(OverlayWidgetControllerSubClass, TEXT("Overlay widget controller tsubclass of Uninitialized, please check BP_ElementalHUD"));
 
 	UUserWidget* widget = CreateWidget<UUserWidget>(GetWorld(), OverlayWidgetSubClass);
-	Overlaywidget = Cast<UElementalUserWidget>(widget);
+	OverlayWidget = Cast<UElementalUserWidget>(widget);
 
 	const FWidgetControllerParams WidgetControllerParams(PC, PS, ASC, AS);
 	UOverlayWidgetController* WidgetController = GetOverlayWidgetController(WidgetControllerParams);
 
-	Overlaywidget->SetWidgetController(WidgetController);
+	OverlayWidget->SetWidgetController(WidgetController);
 
 	widget->AddToViewport();
 }

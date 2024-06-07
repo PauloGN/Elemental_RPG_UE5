@@ -26,7 +26,7 @@ public:
 
 	//~ Pointer and subclass WIDGET to set from blueprint
 	UPROPERTY()
-	TObjectPtr<UElementalUserWidget> Overlaywidget;
+	TObjectPtr<UElementalUserWidget> OverlayWidget;
 
 private:
 
