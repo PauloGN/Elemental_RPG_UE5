@@ -33,5 +33,8 @@ void AElementalHUD::InitOverlay(APlayerController* PC, APlayerState* PS, UAbilit
 
 	OverlayWidget->SetWidgetController(WidgetController);
 
+	//All set
+	WidgetController->BroadcastInitialValues();
+
 	widget->AddToViewport();
 }

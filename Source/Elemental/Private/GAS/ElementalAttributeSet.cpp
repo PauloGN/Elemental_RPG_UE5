@@ -7,7 +7,7 @@
 UElementalAttributeSet::UElementalAttributeSet()
 {
 	InitMaxHealth(100.0f);
-	InitHealth(100.0f);
+	InitHealth(90.0f);
 	InitMaxMana(100.f);
 	InitMana(50.0f);
 }

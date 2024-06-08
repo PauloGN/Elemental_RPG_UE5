@@ -10,3 +10,7 @@ void UElementalWidgetController::SetWidgetControllerParams(const FWidgetControll
 	AbilitySystemComponent = WCParams.AbilitySystemComponent;
 	AttributeSet = WCParams.AttributeSet;
 }
+
+void UElementalWidgetController::BroadcastInitialValues()
+{
+}
