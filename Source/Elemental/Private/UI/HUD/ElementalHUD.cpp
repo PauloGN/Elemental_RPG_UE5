@@ -13,6 +13,7 @@ UOverlayWidgetController* AElementalHUD::GetOverlayWidgetController(const FWidge
 	{
 		OverlayWidgetController = NewObject<UOverlayWidgetController>(this, OverlayWidgetControllerSubClass);
 		OverlayWidgetController->SetWidgetControllerParams(WCParams);
+		OverlayWidgetController->BindCallBacksToDependencies();
 	}
 
 	return OverlayWidgetController;

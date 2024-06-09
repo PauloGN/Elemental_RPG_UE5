@@ -14,3 +14,7 @@ void UElementalWidgetController::SetWidgetControllerParams(const FWidgetControll
 void UElementalWidgetController::BroadcastInitialValues()
 {
 }
+
+void UElementalWidgetController::BindCallBacksToDependencies()
+{
+}

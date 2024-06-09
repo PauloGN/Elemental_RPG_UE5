@@ -5,6 +5,10 @@
 #include "CoreMinimal.h"
 #include "UI/WidgetController/ElementalWidgetController.h"
 #include "OverlayWidgetController.generated.h"
+
+
+struct FOnAttributeChangeData;
+
 /**
  *	Dynamic allows to assign event to them in blueprints
  *	Multicast means that multiple widget blueprints may want to bind to these delegates
@@ -26,11 +30,18 @@ class ELEMENTAL_API UOverlayWidgetController : public UElementalWidgetController
 public:
 
 	virtual void BroadcastInitialValues() override;
+	virtual void BindCallBacksToDependencies() override;
 
 	UPROPERTY(BlueprintAssignable, Category = "GAS|Attributes")
 	FOnHealthChangedSignature OnHealthChanged;
 
 	UPROPERTY(BlueprintAssignable, Category = "GAS|Attributes")
 	FOnMaxHealthChangedSignature OnMaxHealthChanged;
-	
+
+protected:
+
+	//Call Backs for the act of changing attributes value
+	void HealthChanged(const FOnAttributeChangeData& Data) const;
+	void MaxHealthChanged(const FOnAttributeChangeData& Data) const;
+
 };
