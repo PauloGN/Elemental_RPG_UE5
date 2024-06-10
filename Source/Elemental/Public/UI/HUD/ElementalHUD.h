@@ -21,7 +21,9 @@ class ELEMENTAL_API AElementalHUD : public AHUD
 
 public:
 
+	//behave as a singleton
 	UOverlayWidgetController* GetOverlayWidgetController(const FWidgetControllerParams& WCParams);
+
 	void InitOverlay(APlayerController* PC, APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS);
 
 	//~ Pointer and subclass WIDGET to set from blueprint

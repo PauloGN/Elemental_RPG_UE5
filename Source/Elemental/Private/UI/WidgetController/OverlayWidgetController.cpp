@@ -12,14 +12,14 @@ void UOverlayWidgetController::BroadcastInitialValues()
 	OnHealthChanged.Broadcast(ElementalAS->GetHealth());
 	OnMaxHealthChanged.Broadcast(ElementalAS->GetMaxHealth());
 
-	//Response to the act of changing attributes
-	//AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(ElementalAS->GetHealthAttribute()).AddUObject(this, );
 }
 
 void UOverlayWidgetController::BindCallBacksToDependencies()
 {
 	const UElementalAttributeSet* ElementalAS = CastChecked<UElementalAttributeSet>(AttributeSet);
 
+	//Response to the act of changing attributes
+	//AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(ElementalAS->GetHealthAttribute()).AddUObject(this, );
 	//These Functions will be called when the attributes change
 	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(ElementalAS->GetHealthAttribute()).AddUObject(this, &UOverlayWidgetController::HealthChanged);
 	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(ElementalAS->GetMaxHealthAttribute()).AddUObject(this,&UOverlayWidgetController::MaxHealthChanged);
@@ -35,4 +35,12 @@ void UOverlayWidgetController::HealthChanged(const FOnAttributeChangeData& Data)
 void UOverlayWidgetController::MaxHealthChanged(const FOnAttributeChangeData& Data) const
 {
 	OnMaxHealthChanged.Broadcast(Data.NewValue);
+}
+
+void UOverlayWidgetController::ManaChanged(const FOnAttributeChangeData& Data) const
+{
+}
+
+void UOverlayWidgetController::MaxManaChanged(const FOnAttributeChangeData& Data) const
+{
 }
