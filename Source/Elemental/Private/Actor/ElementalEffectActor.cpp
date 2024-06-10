@@ -29,6 +29,7 @@ void AElementalEffectActor::OnOverlap(UPrimitiveComponent* OverlappedComponent, 
 		//BIG NO NO cast away constancy
 		UElementalAttributeSet* MutableElementalAttributeSet = const_cast<UElementalAttributeSet*>(ElementalAttributeSet);
 		MutableElementalAttributeSet->SetHealth(ElementalAttributeSet->GetHealth() + 25.f);
+		MutableElementalAttributeSet->SetMana(ElementalAttributeSet->GetMana() - 10.f);
 		Destroy();
 	}
 }

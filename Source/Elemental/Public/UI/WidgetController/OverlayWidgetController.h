@@ -33,12 +33,19 @@ public:
 	virtual void BroadcastInitialValues() override;
 	virtual void BindCallBacksToDependencies() override;
 
+	//~ Delegates
 	UPROPERTY(BlueprintAssignable, Category = "GAS|Attributes")
 	FOnHealthChangedSignature OnHealthChanged;
 
 	UPROPERTY(BlueprintAssignable, Category = "GAS|Attributes")
 	FOnMaxHealthChangedSignature OnMaxHealthChanged;
 
+	UPROPERTY(BlueprintAssignable, Category = "GAS|Attributes")
+	FOnManaChangedSignature OnManaChanged;
+
+	UPROPERTY(BlueprintAssignable, Category = "GAS|Attributes")
+	FOnMaxManaChangedSignature OnMaxManaChanged;
+	//End Delegates
 protected:
 
 	//Call Backs for the act of changing attributes value
