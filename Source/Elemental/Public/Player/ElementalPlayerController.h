@@ -22,7 +22,6 @@ class ELEMENTAL_API AElementalPlayerController : public APlayerController
 public:
 
 	AElementalPlayerController();
-
 	virtual void PlayerTick(float DeltaSeconds) override;
 
 protected:
