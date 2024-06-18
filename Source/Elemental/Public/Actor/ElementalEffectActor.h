@@ -37,6 +37,5 @@ private:
 	
 };
 
-
 #pragma region  DELETED CODE
 #pragma endregion

@@ -41,7 +41,7 @@ void AElementalCharacter::OnRep_PlayerState()
 {
 	Super::OnRep_PlayerState();
 
-	//Init Ability actor info for the client
+	//Init Ability actor info for the clients
 	InitAbilityActorInfo();
 }
 
