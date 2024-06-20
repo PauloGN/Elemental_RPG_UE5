@@ -34,7 +34,7 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UElementalUserWidget> OverlayWidgetSubClass;
-	// ~End
+	// End
 
 	//~ Pointer and subclass CONTROLLER to set from blueprint
 	UPROPERTY()
@@ -42,5 +42,5 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<UOverlayWidgetController> OverlayWidgetControllerSubClass;
-	//~ End
+	// End
 };

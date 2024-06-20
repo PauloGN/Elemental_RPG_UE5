@@ -1,6 +1,5 @@
 // Copyright Paulo R Santos. GNS
 
-
 #include "Actor/ElementalEffectActor.h"
 
 #include "AbilitySystemComponent.h"
