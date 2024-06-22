@@ -56,7 +56,7 @@ void AElementalCharacter::InitAbilityActorInfo()
 	//Init Actor info for ability system component
 	AbilitySystemComponent->InitAbilityActorInfo(ElementalPlayerState, this);
 
-	//HUD
+	//HUD - Overlay - Widget controller set
 	if(AElementalPlayerController* ElementalPlayerController = Cast<AElementalPlayerController>(GetController()))
 	{
 		if(AElementalHUD* ElementalHUD = Cast<AElementalHUD>(ElementalPlayerController->GetHUD()))
